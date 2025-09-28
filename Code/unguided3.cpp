@@ -2,6 +2,7 @@
 using namespace std;
 int main () {
     int masookan;
+    cout << "Mau seberapa tinggi segitiga nya (inputan kamu + 1)? ";
     cin >> masookan;
     for (int i = 0; i <= masookan; i++) { // untuk mengatur seberapa tinggi segitiga / berapa banyak baris yang dibuat sebanyak masukan
         for (int j = 0; j <= masookan*2; j++){ // untuk mengatur seberapa banyak angka tercetak 

@@ -3,8 +3,8 @@ using namespace std;
 int main () {
     string satuan[] = {"nol", "satu", "dua", "tiga", "empat", "lima", 
         "enam", "tujuh", "delapan", "sembilan"}; // berisi kalimat angka satuan
-    string puluhan[] = {"", "sepuluh", "dua puluh", "tiga puluh", "empat puluh", "lima puluh", "enam puluh", "tujuh puluh", 
-        "delapan puluh", "sembilan puluh"}; // berisi kalimat angka puluhan
+    string puluhan[] = {"", "sepuluh", "dua puluh", "tiga puluh", "empat puluh", "lima puluh", "enam puluh", 
+        "tujuh puluh", "delapan puluh", "sembilan puluh"}; // berisi kalimat angka puluhan
     int masukan; // Sebagai inputan pengguna
     int digitKe1; // digitKe1 sebagai tempat untuk digit pertama/satuan
     int digitKe2; // digitKedua sebagai tempat untuk digit kedua/puluhan

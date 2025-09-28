@@ -12,10 +12,10 @@ int main (){
     cout << "Hasil penjumlahan " << inp1 << " + " << inp2 << " adalah " << inp1 + inp2 << endl;
     cout << "Hasil pengurangan " << inp1 << " - " << inp2 << " adalah " << inp1 - inp2 << endl;
     cout << "Hasil perkalian " << inp1 << " x " << inp2 << " adalah " << inp1 * inp2 << endl;
-    if (inp2 != 0) { //untuk mengindetifikasi pembilang 0 atau tidak
+    if (inp2 != 0) { //untuk mengindetifikasi penyebut 0 atau tidak
         cout << "Hasil pembagian " << inp1 << " / " << inp2 << " adalah " << inp1 / inp2 << endl;
     } else { // jika 0 maka hasilnya tak terdefinisi
-        cout << "Karena pembilang 0, maka hasilnya tak terdefinisi" << endl;
+        cout << "Karena penyebut 0, maka hasilnya tak terdefinisi" << endl;
     }
     return 0;
 }
