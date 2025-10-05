@@ -13,6 +13,7 @@ void cetakProfil(string nama, float nilai) { // Buat prosedur
 void beriNilaiBonus(float &nilai) { // Membuat prosedur, ampersand buat akses variabel nilai
     nilai += 5.0f;
 }
+
 int main (){
     string namaSiswa = "Asep";
     int tugas = 80, uts = 90;
