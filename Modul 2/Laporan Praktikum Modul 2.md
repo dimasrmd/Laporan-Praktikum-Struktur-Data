@@ -309,7 +309,7 @@ Ini merupakan output akhir setelah value dari `hargaProduk` berubah.
 Dapat dilihat bahwa output diatas sudah sesuai dengan harapan dan perhitungan algoritma.
 
 ### 3. Guided 3
-#### Laporan Baca Buku
+#### Nilai Bonus
 
 ![guided 3 - code](<screenshoot/guided 3 - code.png>)
 
