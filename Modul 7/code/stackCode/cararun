@@ -1,0 +1,3 @@
+run dulu -> g++ main.cpp stack.cpp -o program
+harusnya ada file main.exe
+run -> ./main.exe
