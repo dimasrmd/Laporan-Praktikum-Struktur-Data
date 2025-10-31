@@ -69,6 +69,5 @@ void balikStack(Stack &S) {
         while (!IsEmpty(temp2)) { // Pindahkan semua elemen dari temp2 kembali ke S (urutan sudah benar)
             Push(S, Pop(temp2));
         }
-
     }
 }

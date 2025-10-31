@@ -1,6 +1,0 @@
-menyesuaikan dengan outputnya,
-mengganti inputannya
-
-tambahin prosedur push ascending
-
-inputannya dari user menggunakan cin

@@ -886,9 +886,9 @@ int main () {
     cout << "\nDELETE ALL DEMO\n";
     hapusSemua(data);
 }
+```
 
-```Fungsi main berfungsi untuk memanggil semua prosedur dan fungsi yang telah dibuat dan sebagai tempat untuk mengoperasikan semua perintah.
-
+Fungsi main berfungsi untuk memanggil semua prosedur dan fungsi yang telah dibuat dan sebagai tempat untuk mengoperasikan semua perintah.
 
 #### Output: 
 
@@ -903,5 +903,6 @@ Dari output diatas dapat dilihat bahwa sudah sesuai dengan urutan dari yang suda
 Sebagai praktikan, saya telah mempelajari dan mengimpementasikan doubly linked list ini. Doubly linked list merupakan linked list yang memiliki traversal dua arah (maju atau mundul), sehingga lebih fleksibel dibandingkan dengan single linked list. Melalui praktikum ini, saya menjadi paham bagaimana cara untuk memasukkan, menghapus, atau pencarian data dalam doubly linked list.
 
 ## referensi
-- https://id.jobstreet.com/id/career-advice/article/stack-adalah#TOC1
--
+- https://rumahcoding.co.id/linked-list-pengertian-dan-implementasi-dasar/#ii-pengertian-linked-list
+- https://www.geeksforgeeks.org/dsa/difference-between-singly-linked-list-and-doubly-linked-list/
+- https://www.geeksforgeeks.org/dsa/advantages-disadvantages-and-uses-of-doubly-linked-list/
