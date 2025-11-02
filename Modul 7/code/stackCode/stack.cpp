@@ -36,7 +36,7 @@ infotype Pop(Stack &S) {
     }else {
         cout << "Stack Kosong. Gabisa pop." << endl; // pesan error jika stack kosong
     }
-        return X; // kembalikan elemen yang di-pop
+    return X; // kembalikan elemen yang di-pop
 }
 
 // Fungsi untuk menampilkan isi stack

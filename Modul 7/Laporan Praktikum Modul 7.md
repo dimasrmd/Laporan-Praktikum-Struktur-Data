@@ -3,896 +3,367 @@
 <p align="center">103112400065</p>
 
 ## Tujuan Praktikum
-1. Mahasiswa dapat menggunakan double linked list pada pembuatan kode program.
-2. Mahasiswa dapat memahami konsep dari double linked list.
-3. Melatiih problem solving mahasiswa dengan mengimplementasikan double linked list.
+1. Mahasiswa dapat menggunakan stack pada pembuatan kode program.
+2. Mahasiswa dapat memahami konsep dari stack.
+3. Melatiih problem solving mahasiswa dengan mengimplementasikan stack.
 
 ## Dasar Teori
-### Pengertian Doubly Linked List
-Doubly linked list merupakan salah satu jenis dari linked list yang memiliki arah maju dan arah mundur. Linked list adalah merupakan struktur data linear yang terdiri dari 1 elemen atau lebih, setiap elemennnya disebut sebagai node. Node ini memiliki dua bagian utama yaitu bagian yang menyimpan value dan bagian yang menyimpan alamat node lainnya.
+### Pengertian Stack
+Stack adalah Abstract Data Type (ADT) atau sekumpulan data linear yang bekerja berdasarkan prinsip tertentu. Secara harfiah stack artinya adalah tumpukan, dalam dunai pemrograman stack adalah tumpukan data-data yang menyimpan suatu objek atau variabel.
+Stack memiliki beberapa komponen didalamnya:
+1. `Top` (Puncak), menandakan posisi pertama atau paling atas dalam stack.
+2. `Data`, yang berisi kumpulan elemen data sesuai kebutuhan program.
+3. `Bottom` (Dasar), kebalikan dari `Top` yaitu berada paling bawah atau elemen paling terakhir dalam stack.
+4. `pointer`, posisi yang selalu menunjuk puncak.
 
-### Perbedaan Doubly dengan Single Linked List
-#### Single Linked List
+### Prinsip Kerja LIFO (Last-In, First-Out)
+LIFO merupakan metode pengolahan data yang memiliki konsep terakhir masuk dapat keluar pertama kali. LIFO ini sering digunakan dalam Linked List, dan salah satunya adalah stack.
+Misalkan kita memiliki sebuah rantang susun seperti ini:
+![rantang - ilustrasi stack](<../Modul 7/screenshoot/Lampiran/rantang - ilustrasi stack.jpeg>)
+Sekarang bayangkan rantang itu belum kita susun atau masih menyiapkan makanannya. Jika kita selesai menyiapkan semua makanan pada tempat rantangnya, maka kita perlu memasukkan satu persatu rantangnya. Nah rantang pertama yang kita masukkan akan berada di paling bawah sedangkan rantang yang paling terakhir kita masukkan berada di paling atas. Jika kita ingin mengambil rantang paling bawah maka kita perlu mengeluarkan semua rantang dari atas secara berurutan. Konsep ini disebut sebagai LIFO yang digunakan dalam stack.
 
-![Gambar System Single Linked List](<screenshoot/Lampiran laporan/Gambar single linked list bagus.png>)
+### Operasi-Operasi Dasar Stack
+Stack memiliki beberapa jenis operasi yang sering digunakan yaitu:
+- push, merupakan operasi yang memasukkan elemen baru ke dalam stack dan menjadi TOP atau puncak yang baru.
+- pop, merupakan operasi yang menghilangkan atau mengeluarkan elemen TOP (paling atas) dari stack.
+- peek (atau top), untuk melihat atau mendapatkan nilai elemen diatas stack tanpa menghapusnya.
+- isEmpty, merupakan operasi boolean untuk memeriksa apakah termausk stack kosong atau tidak.
+- isFull, operasi boolean yang digunakan untuk memeriksa apakah stack sudah penuh atau belum.
 
-Pada gambar diatas, single linked list hanya memiliki satu arah saja yaitu maju saja atau mundur saja. Dan untuk pointer pada setiap node nya hanya satu atau setiap node nya hanya menyimpan satu alamat node lain.
-
-#### Doubly Linked List
-
-![Gambar System Doubly Linked List](<screenshoot/Lampiran laporan/Gambar doubly linked list bagus.png>)
-
-Pada gambar diatas, pada doubly linked list terlihat memiliki arah maju dan mundur. Sehingga pada setiap node nya menyimpan 2 alamat node di sebelahnya.
-
-### Kelebihan dan Kekurangan menggunakan Doubly Linked List
-Kelebihan:
-1. Mengubah arah linked list menjadi lebih mudah.
-2. Membuat operasi delete lebih cepat.
-3. Mudah menyisipkan sebuah data dalam list.
-
-Kekurangan:
-1. Penggunaan memori yang lebih besar dibandingkan dengan array dan single linked list.
-2. Implementasi lebih rumit dari single linked list, karena harus mengatur dua pointer dalam satu node.
-3. Sama seperti single linked list, doubly linked list tidak mendukung akses langsung ke elemen tertentu (seperti array).
+### Perbedaan Stack dan Queue
+Dari pengertian stack diatas dia menerapkan konsep LIFO yaitu terakhir masuk pertama kali keluar, sedangkan untuk Queue menggunakan konsep FIFO yaitu pertama kali masuk pertama kali keluar. Maka perbedaannya ada di konsep atau metode nya saja.
 
 ## Guided
 ### 1. Guided 1
-#### DLL INSERT
 
-![guided 1 - code](<screenshoot/guided 1 - code.png>)
+#### Code C++ Main
+![guided 1 - code_main](<screenshoot/stackCode/guided 1 - code_main.png>)
 
-**Penjelasan**
-
-#### Bagian 1
+##### Bagian 1
 
 ```C++
+#include "stack.h" 
 #include <iostream>
-#define Nil NULL
 using namespace std;
 ```
 
-Jadi fungsi `include <iostream>` untuk menambahkan fitur input ouput kedalam program yang kita ingin berikan. Sedangkan `using namespace std;` berfungsi untuk memudahkan dalam pembuatan kode agar saat kita ingin menggunakan `cin`, `cout`, dan sebagainya dapat langsung tanpa `std` terlebih dahulu pada setiap kode nya. Lalu fungsi dari `define Nil NULL` mendefiniskan bawha variabel `Nil` adalah `NULL`.
+pada file main ini mengimport file `stack.h` dan `<iostream>`. Lalu menggunakan juga fungsi `standar` yang dipakai untuk `cout` dan `cin` agar dapat lebih simple dalam menuliskannya.
 
-#### Bagian 2
-
-```C++
-typedef int infotype;
-typedef struct elmlist *address;
-
-struct elmlist {
-    infotype info;
-    address next;
-    address prev;
-};
-
-struct List {
-    address first;
-    address last;
-};
-```
-
-Disini kita membuat tipe data baru dan struct untuk membuat kerangka dari node nya. `typedef int infotype` artinya membuat tipe data `infotype` bertipekan `int`. `typedef struct elmlist *address` artinya membuat alias tipe data address yang menyimpan alamat ke `struct elmlist`.
-Lalu untuk `struct elmlist` untuk membuat node nya yaitu berisi info, next, dan prev. Dan `struct List` untuk membuat head dan juga tail atau first dan juga last yang berfungsi sebagai pointer yang menunjuk dari setiap ujung pada List.
-
-#### Bagian 3
+##### Bagian 2
 
 ```C++
-void insertFirst(List &L, address P) {
-    P -> next = L.first;
-    P -> prev = Nil;
-    if (L.first != Nil) L.first -> prev = P;
-    else L.last = P;
-    L.first = P;
-}
+int main() {
+    Stack S; 
+    CreateStack(S); 
 
-void insertLast(List &L, address P) {
-    P->prev = L.last;
-    P->next = Nil;
-    if (L.last != Nil) L.last -> next = P;
-    else L.first = P;
-    L.last = P;
-}
+    Push(S, 3); 
+    Push(S, 4); 
+    Push(S, 8); 
+    Pop (S);     
+    Push(S, 2); 
+    Push(S, 3); 
+    Pop (S);    
+    Push(S, 9); 
 
-void insertAfter(List &L, address P, address R){
-    P -> next = R -> next;
-    P -> prev = R;
-    if (R -> next != Nil) R -> next -> prev = P;
-    else L.last = P;
-    R -> next = P;
-}
-```
+    cout << "Stack awal: " << endl;
+    printInfo(S); 
 
-Untuk prosedur `insertFirst` berfungsi untuk menyisipkan node `P` sebagai node yang paling pertama. Untuk prosedur `insertLast` berfungsi untuk menyisipkan node `P` sebagai node yang paling terakhir. Dan untuk prosedur `insertAfter` berfungsi untuk menyisipkan node `P` setelah node `R`.
+    cout << " Balik Stack: " << endl;
+    balikStack(S); 
 
-#### Bagian 4
+    cout << "Stack setelah dibalik: " << endl;
+    printInfo(S); 
 
-```C++
-address alokasi(infotype x){ // Definisi fungsi alokasi untuk membuat elemen baru
-    address P = new elmlist; // Alokasikan memori baru untuk elemen
-    P -> info = x;
-    P -> next = Nil;
-    P -> prev = Nil;
-    return P;
-}
-```
-
-Ini adalah fungsi `alokasi` yang memiliki tipe data `address` sehingga output dari fungsi ini merupakan sebuah node `P`. `alokasi` bertujuan untuk membuat node baru yang akan memasukkan value `x` ke dalam node baru itu.
-
-#### Bagian 5
-
-```C++
-void printInfo(List L){
-    address P = L.first;
-    while (P != Nil) {
-        cout << P -> info << " ";
-        P = P -> next;
-    }
-    cout << endl;
-}
-```
-
-Prosedur `printInfo` berfungsi untuk mencetak semua value yang ada pada list, dimulai dari head sampai tail. Prosedur ini mengambil data dari sebuah list lalu mencetak semua value dari list tersebut.
-
-#### Bagian 6
-
-```C++
-int main (){
-    List L;
-    L.first = Nil;
-    L.last = Nil;
-    address P1 = alokasi(1);
-    insertFirst(L, P1);
-    address P2 = alokasi(2);
-    insertLast(L, P2);
-    address P3 = alokasi(3);
-    insertAfter(L, P3, P2);
-    printInfo(L);
     return 0;
 }
 ```
 
-Fungsi `main` disini hanya memanggil semua fungsi yang diatas lalu dimasukkan angka nya secara manual.
+Ini adalah pemanggilan semua fungsi yang ada dengan value yang berbeda-beda.
 
-#### Output:
+#### Code C++ Stack
+![guided 1 - code_stackCPP](<screenshoot/stackCode/guided 1 - code_stackCPP.png>)
 
-![guided 1 - output](<screenshoot/guided 1 - output.png>)
-
-**Penjelasan**
-
-Dari output diatas, sesuai dengan program yang telah dibuat. Pertama kita mengalokasikan angka 1 ke sebuah pointer lalu sisipkan di awal. Dan mengalokasikan angka 2 dan menyisipkan di akhir. Dan mengalokasikan angka 3 menyisipkan setelah pointer yang memiliki value 2.
-
-### 2. Guided 2
-#### DLL HAPUS/DELETE
-
-![guided 2 - code](<screenshoot/guided 2 - code.png>)
-
-**Penjelasan**
-
-#### Bagian 1
+##### Bagian 1
 
 ```C++
-#include <iostream>
+#include "stack.h" 
 using namespace std;
-#define Nil NULL
 ```
 
-Jadi fungsi `include <iostream>` untuk menambahkan fitur input ouput kedalam program yang kita ingin berikan. Sedangkan `using namespace std;` berfungsi untuk memudahkan dalam pembuatan kode agar saat kita ingin menggunakan `cin`, `cout`, dan sebagainya dapat langsung tanpa `std` terlebih dahulu pada setiap kode nya. Lalu fungsi dari `define Nil NULL` mendefiniskan bawha variabel `Nil` adalah `NULL`.
+Pada `stack.cpp` mengimport `stack.h` dan menggunakan `std` seabagai arahan kepada kompiler C++ agar tidak perlu menggunakan `std` pada setiap `cout`, `cin`, dan `endl`.
 
-#### Bagian 2
-
-```C++
-typedef int infotype;
-typedef struct elmlist *address;
-
-struct elmlist {
-    infotype info;
-    address next;
-    address prev;
-};
-    
-struct List {
-    address first;
-    address last;
-};
-```
-
-Disini kita membuat tipe data baru dan struct untuk membuat kerangka dari node nya. `typedef int infotype` artinya membuat tipe data `infotype` bertipekan `int`. `typedef struct elmlist *address` artinya membuat alias tipe data address yang menyimpan alamat ke `struct elmlist`.
-Lalu untuk `struct elmlist` untuk membuat node nya yaitu berisi info, next, dan prev. Dan `struct List` untuk membuat head dan juga tail atau first dan juga last yang berfungsi sebagai pointer yang menunjuk dari setiap ujung pada List.
-
-#### Bagian 3
+##### Bagian 2
 
 ```C++
-address alokasi(infotype x) {
-    address P = new elmlist;
-    P -> info = x;
-    P -> next = Nil;
-    P -> prev = Nil;
-    return P;
+void CreateStack(Stack &S) {
+    S.TOP = Nil; 
 }
 
-void dealokasi(address &P) {
-    delete P;
-    P = Nil;
+bool IsEmpty(Stack S) {
+    return S.TOP == Nil; 
+}
+
+bool IsFull(Stack S) {
+    return S.TOP == MaxEl - 1;
 }
 ```
 
-Ini adalah fungsi `alokasi` yang memiliki tipe data `address` sehingga output dari fungsi ini merupakan sebuah node `P`. `alokasi` bertujuan untuk membuat node baru yang akan memasukkan value `x` ke dalam node baru itu. Dan prosedur `dealokasi` untuk menghapus penuh sebuah node menggunakan `delete` untuk membebaskan memori yang sebelumnya dipakai oleh `P` dan membuat isi dari `P` adalah `Nil`.
+Prosedur `CreateStack` untuk membuat stack kosong dengan inisiasi `TOP = Nil` atau bernilai -1. Lalu Fungsi `IsEmpty` untuk cek apakah stack kosong menggunakan perbandingan `S.TOP == Nil`. Fungsi `IsFull` digunakan untuk mengecek apakah stack sudah penuh atau belum menggunakan `S.TOP == MaxEl - 1`.
 
-#### Bagian 4
+##### Bagian 3
 
 ```C++
-void insertFirst(List &L, address P) {
-    P -> next = L.first;
-    P -> prev = Nil;
-    if (L.first != Nil) L.first -> prev = P;
-    else L.last = P;
-    L.first = P;
+void Push(Stack &S, infotype X) {
+    if (!IsFull(S)) { 
+        S.TOP++; 
+        S.info[S.TOP] = X; 
+    } else {
+        cout << "Stack is full. Cannot push " << X << endl; 
+    }
 }
 
-void printInfo(List L){
-    address P = L.first;
-    while (P != Nil) {
-        cout << P -> info << " ";
-        P = P -> next;
+
+infotype Pop(Stack &S) {
+    infotype X = -999;
+    if (!IsEmpty(S)) { 
+        X = S.info[S.TOP];
+        S.TOP--; 
+    }else {
+        cout << "Stack Kosong. Gabisa pop." << endl; 
+    }
+    return X; 
+}
+```
+
+Prosedur `Push` digunakan untuk memasukkan elemen baru ke dalam stack yang di letakkan pada posisi puncak atau paling atas, didalamnya ada dua kondisi saat stack tidak full maka prosedur akan memasukkann elemen baru, jika penuh prosedur akan memberitahu bahwa stack penuh. Dan ada fungsi `Pop` berguna untuk memindahkan elemen paling atas ke variabel `x` dan merubah elemen paling atas menjadi elemen dibawahnya.
+
+##### Bagian 4
+
+```C++
+void printInfo(Stack S) {
+    if (IsEmpty(S)) {
+        cout << "Stack Kosong" << endl; // pesan jika stack kosong
+    } else {
+        cout << "[TOP] "; // Tampilkan penanda TOP
+        for (int i = S.TOP; i >= 0; i--) { // iterasi dari TOP ke bawah
+            cout << S.info[i] << " "; // tampilkan elemen
+        }
+        cout << endl;
     }
 }
 ```
 
-Seperti pada `guided 1`. Fungsi dari `inserFirst` untuk menyisipkan node `P` ke urutan paling pertama. Sedangkan fungsi `printInfo` untuk mencetak semua value dalam list.
+Prosedur `printInfo` berguna untuk mencetak semua elemen pada stack yaitu dari elemen palling atas sampai paling bawah.
 
-#### Bagian 5
+##### Bagian 5
 
 ```C++
-void deleteFirst(List &L, address &P){
-    P = L.first;
-    L.first = L.first -> next;
-    if (L.first != Nil) L.first -> prev = Nil;
-    else L.last = Nil;
-    P -> next = Nil;
-    P -> prev = Nil;
-}
+void balikStack(Stack &S) {
+    if (!IsEmpty(S)) { // Cek apakah stack tidak kosong
+        Stack temp1, temp2; // deklarasi dua stack temporary
+        CreateStack(temp1); CreateStack(temp2); // inisialisasi kedua stack temporary
 
-void deleteLast(List &L, address &P) {
-    P = L.last;
-    L.last = L.last -> prev;
-    if (L.last != Nil) L.last -> next = Nil; 
-    else L.first = Nil;
-    P -> prev = Nil;
-    P -> next = Nil;
-}
+        while (!IsEmpty(S)) { // Pindahkan semua elemen dari S ke temp1 (urutan terbalik)
+            Push(temp1, Pop(S));
+        }
 
-void deleteAfter(List &L, address &P, address R) {
-    P = R -> next;
-    R -> next = P -> next;
-    if (P -> next != Nil) P -> next -> prev = R;
-    else L.last = R;
-    P -> prev = Nil;
-    P -> next = Nil;
+        while (!IsEmpty(temp1)) { // Pindahkan semua elemen dari temp1 ke temp2 (urutan terbalik lagi)
+            Push(temp2, Pop(temp1));
+        }
+
+        while (!IsEmpty(temp2)) { // Pindahkan semua elemen dari temp2 kembali ke S (urutan sudah benar)
+            Push(S, Pop(temp2));
+        }
+    }
 }
 ```
 
-Prosedur-prosedur diatas adalah prosedur untuk memisahkan node `P` dari list. Untk delete yang pertama berfungsi memisahkan node yang paling pertama, lalu yang kedua untuk memisahkan node yang paling terakhir, dan yang terakhir untuk memisahkan node setelah node `R`.
+Prosedur `balikStack` berguna untuk membalikkan urutan dari elemen pada stack, ini dapat kita bayangkan seperti menumpahkan gelas berisi bola ke gelas lainnya. Yang tadinya paling atas sekarang paling bawah dan sebaliknya.
 
-#### Bagian 6
+#### Code header stack
+![guided 1 - code_stackHeader](<screenshoot/stackCode/guided 1 - code_stackHeader.png>)
+
+##### Bagian 1
 
 ```C++
-int main (){
-    List L;
-    L.first = Nil;
-    L.last = Nil;
-    insertFirst(L, alokasi(1));
-    insertFirst(L, alokasi(2));
-    insertFirst(L, alokasi(3));
-    printInfo(L);
-    address P;
-    deleteFirst(L, P);
-    dealokasi(P);
-    deleteAfter(L, P, L.first);
-    dealokasi(P);
-    cout << endl;
-    printInfo(L);
-    return 0;
-}
+#ifndef STACK_H
+#define STACK_H
+...
+#endif
 ```
 
-Ini adalah fungsi utama yang memanggil semua fungsi yang sudah dibuat sebelumnya.
+Ini berguna untuk mencegah file header ini di-include oleh `namaFile.cpp` lebih dari sekali yang akan menyebabkan file eror.
 
-#### Output:
+##### Bagian 2
 
-![guided 2 - output](<screenshoot/guided 2 - output.png>)
+```C++
+#include <iostream>
+#define MaxEl 20
+#define Nil -1
+
+typedef int infotype;
+```
+
+Program ini menggunakn `iostream` untuk mencetak atau menginput suatu variabel. Mendefinisikan variabel `maxEl` adalah 20. Mendefinisikan variabel `Nil` adalah -1. Membuat alias tipedata integer untuk variabel `infotype`.
+
+##### Bagian 3
+
+```C++
+struct Stack {
+    infotype info[MaxEl];
+    int TOP;
+};
+```
+
+Bertujuan mendefinisikan tipe data baru yaitu `stack` sebagai struktur. `stack` memiliki dua bagian yaitu `info[]` bertipe `infotype` merupakan array yang menyimpan `MaxEl`, dan `TOP` bertipe integer yang befungsi sebagai penanda elemen paling atas.
+
+##### Bagian 4
+
+```C++
+void CreateStack(Stack &S);
+bool IsEmpty(Stack S);
+bool IsFull(Stack S);
+void Push(Stack &S, infotype X); 
+infotype Pop(Stack &S); 
+void printInfo(Stack S); 
+void balikStack(Stack &S); 
+```
+
+Bagian ini hanya memberitahu compiler bahwa "ada" fungsi-fungsi yang ada didalam file header.
+
+#### Output
+
+![guided 1 - output](<screenshoot/stackCode/guided 1 - output.png>)
 
 **Penjelasan**
 
-Dilihat dari output yang telah muncul, dapat dikatakan bahwa output sudah sesuai dengan tujuan dari programnya. Pertama menyisipkan node bervalue 1 ke paling awal dari list, lalu menyisipkan node bervalue 2 ke paling awal artinya sebelum node bervalue 1, dan terakhir menyisipkan node bervalue 3 sebelum node bervalue 2. 
-Setelah itu akan di hapus elemen pertama dan langsung di dealokasikan, lalu menghapus elemen setelah elemen pertama yang baru. Dan output setelah di hapus ada di baris kedua.
+Dari output diatas, sudah sesuai dengan program yang telah dibuat.
 
 ## Unguided
 ### 1. Unguided 1
-#### Modifikasi guided 1 (insertBefore dan printRevers)
 
-![unguided 1 - code](<screenshoot/unguided 1 - code.png>)
+##### Code C++ Main
+![Unguided 1 - code_main](<screenshoot/Unguided 1/Unguided 1 - code_main.png>)
 
-#### Bagian 1
+File `main` ini sama saja dengan kode main pada file `guided 1`. Yang membedakan hanya pada value inputan saja
 
-```C++
-#include <iostream>
-#define Nil NULL
-using namespace std;
-```
+##### Code C++ Stack**
+![Unguided 1 - code_stackCPP](<screenshoot/Unguided 1/Unguided 1 - code_stackCPP.png>)
 
-Jadi fungsi `include <iostream>` untuk menambahkan fitur input ouput kedalam program yang kita ingin berikan. Sedangkan `using namespace std;` berfungsi untuk memudahkan dalam pembuatan kode agar saat kita ingin menggunakan `cin`, `cout`, dan sebagainya dapat langsung tanpa `std` terlebih dahulu pada setiap kode nya. Lalu fungsi dari `define Nil NULL` mendefiniskan bawha variabel `Nil` adalah `NULL`.
+File `main` ini juga sama saja dengan kode stack untuk cpp pada file `guided 1`.
 
-#### Bagian 2
+##### Code header stack
+![Unguided 1 - code_stackHeader](<screenshoot/Unguided 1/Unguided 1 - code_stackHeader.png>)
 
-```C++
-typedef int infotype;
-typedef struct elmlist *address; 
-
-struct elmlist {
-    infotype info;
-    address next;
-    address prev;
-};
-
-struct List {
-    address first;
-    address last;
-};
-```
-
-Disini kita membuat tipe data baru dan struct untuk membuat kerangka dari node nya. `typedef int infotype` artinya membuat tipe data `infotype` bertipekan `int`. `typedef struct elmlist *address` artinya membuat alias tipe data address yang menyimpan alamat ke `struct elmlist`.
-Lalu untuk `struct elmlist` untuk membuat node nya yaitu berisi info, next, dan prev. Dan `struct List` untuk membuat head dan juga tail atau first dan juga last yang berfungsi sebagai pointer yang menunjuk dari setiap ujung pada List.
-
-#### Bagian 3
-
-```C++
-void insertFirst(List &L, address P) {}
-
-void insertLast(List &L, address P) {}
-
-void insertAfter(List &L, address P, address R){}
-
-address alokasi(infotype x){}
-
-void printInfo(List L){}
-```
-
-Fungsi dan prosedur diatas sama saja dengan bagian 3, 4, dan 5 di `guided 1`. 
-
-#### Bagian 4
-
-```C++
-void insertBefore(List &L, address P, address R){ 
-// P untuk data yang dimasukkan, R untuk patokan pemasukan data
-    P -> prev = R -> prev;
-    P -> next = R;
-    if (R -> prev != Nil) R -> prev -> next = P;
-    else L.first = P;
-    R -> prev = P;
-    cout << "Berhasil insert " << P -> info << " sebelum " << R -> info;
-    cout << endl; 
-} // ini adalah masuk sebeleum, kabalikan dari masuk setelah
-```
-
-Prosedur ini bertujuan untuk menyisipkan `P` setelah node `R`. Prosedur ini akan menyisipkan node baru, dan mencetak keterangan dari proses penyisipan.
-
-#### Bagian 5
-
-```C++
-void printReverse(List L) {
-    address P = L.last;
-    cout << "Backward: ";
-    while (P != Nil) {
-        cout << P -> info << " ";
-        P = P -> prev;
-    }
-    cout << endl;
-}
-```
-
-Prosedur ini adalah kebalikan dari prosedur `printInfo` pada bagian 3. Yang membedakan adalah pointer P yang berawal dari `L.last` yang artinya pointer dimualai dari akhir elemen.
-
-#### Bagian 6
-
-```C++
-int main (){
-    List L;
-    L.first = Nil;
-    L.last = Nil;
-
-    cout << "TASK 1: INSERT OPERATION\n";
-    address P1 = alokasi(1);
-    insertFirst(L, P1);
-    address P2 = alokasi(3);
-    insertLast(L, P2);
-    address P3 = alokasi(2);
-    insertAfter(L, P3, P2);
-    cout << "List awal: \n";
-    printInfo(L);
-    printReverse(L);
-
-    address P4 = alokasi(4);
-    insertBefore(L, P4, P3);
-    address P5 = alokasi(5);
-    insertBefore(L, P5, P1);
-
-    cout << "List setelah insert before:\n";
-    printInfo(L);
-    printReverse(L);
-    return 0;
-}
-```
-
-Ini adalah prosedur utama yang memanggil semua fungsi yang ada diatas. Tujuan dari prosedur utama ini memasukkan angka sebagai value dari node dan mencetak info dari pembuatan dan penyisipan node.
+File `main` ini juga sama saja dengan kode stack untuk header pada file `guided 1`.
 
 #### Output: 
 
-![unguided 1 - output](<screenshoot/unguided 1 - output.png>)
+![Unguided 1 - output](<screenshoot/Unguided 1/Unguided 1 - output.png>)
 
 **Penjelasan**
 
 Dari output diatas, dapaat dikatakan bahwa output sudah sesuai dengan program yang telah dibuat.
 
 ### 2. Unguided 2
-#### Modifikasi guided 2 (deleteByValue dan deleteAll)
+#### Menambahkan pushAscending
 
-![unguided 2 - code](<screenshoot/unguided 2 - code.png>)
+##### Code C++ Main
+![Unguided 2 - code_main](<screenshoot/Unguided 2/Unguided 2 - code_main.png>)
 
-#### Bagian 1
+File `main` pada `unguided 2` ini merupakan penambahan file main pada `unguided 1`. Yaitu prosedur `pushAscending`, yang dimana fungsi dari prosedur ini dapat membuat setiap inputan terurut dalam stack. Dalam fungsi `main` ini hanya untuk pemanggilan setiap fungsi.
 
-```C++
-#include <iostream>
-#define Nil NULL
-using namespace std;
-```
+##### Code C++ Stack
+![Unguided 2 - code_stackCPP](<screenshoot/Unguided 2/Unguided 2 - code_stackCPP.png>)
 
-Jadi fungsi `include <iostream>` untuk menambahkan fitur input ouput kedalam program yang kita ingin berikan. Sedangkan `using namespace std;` berfungsi untuk memudahkan dalam pembuatan kode agar saat kita ingin menggunakan `cin`, `cout`, dan sebagainya dapat langsung tanpa `std` terlebih dahulu pada setiap kode nya. Lalu fungsi dari `define Nil NULL` mendefiniskan bawha variabel `Nil` adalah `NULL`.
-
-#### Bagian 2
+Dalam file ini, kita hanya menambahkan prosedur baru yaitu `pushAscending`.
 
 ```C++
-typedef int infotype;
-typedef struct elmlist *address;
-
-struct elmlist {
-    infotype info;
-    address next;
-    address prev;
-};
-
-struct List {
-    address first;
-    address last;
-};
-```
-
-Bagian ini merupakan bagian yang sama dengan bagian 2 pada `guided 2`.
-
-#### Bagian 3
-
-```C++
-address alokasi(infotype x) {
-    address P = new elmlist;
-    P -> info = x;
-    P -> next = Nil;
-    P -> prev = Nil;
-    return P;
-}
-
-void dealokasi(address &P) {
-    delete P;
-    P = Nil;
-}
-```
-
-Bagian ini merupakan bagian yang sama dengan bagian 3 pada `guided 2`.
-
-#### Bagian 4
-
-```C++
-void insertFirst(List &L, address P) {
-    P -> next = L.first;
-    P -> prev = Nil;
-    if (L.first != Nil) L.first -> prev = P;
-    else L.last = P;
-    L.first = P;
-}
-
-void printInfo(List L){
-    address P = L.first;
-    while (P != Nil) {
-        cout << P -> info << " ";
-        P = P -> next;
-    }
-    cout << endl;
-}
-
-void deleteFirst(List &L, address &P){
-    P = L.first;
-    L.first = L.first -> next;
-    if (L.first != Nil) L.first -> prev = Nil;
-    else L.last = Nil;
-    P -> next = Nil;
-    P -> prev = Nil;
-}
-
-void deleteLast(List &L, address &P) {
-    P = L.last;
-    L.last = L.last -> prev;
-    if (L.last != Nil) L.last -> next = Nil; 
-    else L.first = Nil;
-    P -> prev = Nil;
-    P -> next = Nil;
-}
-
-void deleteAfter(List &L, address &P, address R) {
-    P = R -> next;
-    R -> next = P -> next;
-    if (P -> next != Nil) P -> next -> prev = R;
-    else L.last = R;
-    P -> prev = Nil;
-    P -> next = Nil;
-}
-```
-
-Bagian ini merupakan bagian yang sama dengan bagian 4 dan 5 pada `guided 2`.
-
-#### Bagian 5
-
-```C++
-void deleteByValue(List &L, infotype val) {
-    address R;
-    bool cekAda = false;
-    address P = L.first;
-    while (P != Nil && !cekAda) {
-        if (P->info == val) {
-            if (P = L.first) {
-                deleteFirst(L, P);
-            } else if (P = L.last) {
-                deleteLast(L, P);
-            } else {
-                R = P->prev;
-                deleteAfter(L, P, R);
-            }
-            cekAda = true;
-            cout << "Data " << val << " berhasil di hapus\n";
-        }
-        P = P->next;
-    }
-    
-    if (!cekAda) {
-        cout << "Data " << val << " tidak ditemukan\n";
-        cout << "List tetap: ";
-        printInfo(L);
+void pushAscending(stack &S, infotype x) {
+    if (penuh(S)) {
+        cout << "Stack penuh!" << x << "tidak di-input ke stack." << endl;
     } else {
-        dealokasi(P);
+        stack temp1;
+        createStack(temp1);
+        while (!kosong(S) && S.info[S.TOP] <= x) {
+            push(temp1, pop(S));
+        }
+        push(S, x);
+        while(!kosong(temp1)) {
+            push(S, pop(temp1));
+        }
     }
 }
 ```
 
-Bagian ini merupakan bagian yang memodifikasi dari `guided 2`. Prosedur ini berfungsi unutuk menghpaus elemen pertama yang dicari melalui parameter `val`. Prosedur ini bekerja menggunakan perulangan dengan mengkombinasikan percabangan untuk membandingkan value dari setiap elemen dengan parameter `val`.
+Algoritma utama prosedur ini dapat berjalan jika stack tidak penuh, perulangan pertama akan terjadi sampai stack `S` kosong dan `S.info[S.TOP]` <=  `x` atau inputan user. Algortima utama berisi pemindahan stack dari stack `S` ke stack sementara, yang berpindah hanya angka yang lebih kecil dari `x` saja. setelah perulangan pertama selesai maka lakukan sebaliknya untuk menaruh kembali value yang ada di `temp1` ke `S`.
+
+##### Code header stack
+![Unguided 2 - code_stackHeader](<screenshoot/Unguided 2/Unguided 2 - code_stackHeader.png>)
+
+Pada header untuk `Unguided 2` ini, ada penambahan seperti sebelumnya yaitu prosedur `pushAscending`. 
+
+```C++
+void pushAscending(stack &S, infotype x);
+
+```
+
+Prosedur ini memilik 2 parameter, variabel `S` sebagai input dan outputnya dan variabel `x` sebagai input dari user.
 
 #### Output: 
 
-![unguided 2 - output](<screenshoot/unguided 2 - output.png>)
+![Unguided 2 - output](<screenshoot/Unguided 2/Unguided 2 - output.png>)
 
 **Penjelasan**
 
 Output yang ada diatas sudah sesuai dengan program yang dijalankan dan sesuai dengan tujuan dari program ini.
 
 ### 3. Unguided 3
-#### smartInsert
+#### Menambahkan getInputStream
 
-![unguided 3 - code part 1](<screenshoot/unguided 3 - code part 1.png>)
-![unguided 3 - code part 2](<screenshoot/unguided 3 - code part 2.png>)
+##### Code C++ Main
+![Unguided 3 - code_main](<screenshoot/Unguided 3/Unguided 3 - code_main.png>)
 
-#### Bagian 1
+Pada fungsi `main` ini, ada pemanggilan prosedur `getInputString`. Jika program dijalankan maka, system akan selalu membaca inputan dari user sampai kondisi tertentu, dalam program ini sampai user menekan tombol enter.
 
-```C++
-#include <iostream>
-using namespace std;
-#define Nil NULL
-```
+##### Code C++ Stack
+![Unguided 3 - code_stackCPP](<screenshoot/Unguided 3/Unguided 3 - code_stackCPP.png>)
 
-Jadi fungsi `include <iostream>` untuk menambahkan fitur input ouput kedalam program yang kita ingin berikan. Sedangkan `using namespace std;` berfungsi untuk memudahkan dalam pembuatan kode agar saat kita ingin menggunakan `cin`, `cout`, dan sebagainya dapat langsung tanpa `std` terlebih dahulu pada setiap kode nya. Lalu fungsi dari `define Nil NULL` mendefiniskan bawha variabel `Nil` adalah `NULL`.
-
-#### Bagian 2
+File ini ada penambaha yaitu prosedur `getInputStream`. 
 
 ```C++
-typedef int infotype;
-typedef struct dimasList *address;
+void getInputStream(stack &S) {
+    char input;
+    cout << "Masukkan deret angka (akhiri dengan enter): ";
 
-struct dimasList {
-    infotype info;
-    address next;
-    address prev;
-};
+    input = cin.get();
+    while (input != '\n') {
+        infotype value = input - '0'; // konversi char ke int
+        // misal char '4' (ASCII 52) - char '0' (ASCII 48) = int 4
 
-struct List {
-    address first;
-    address last;
-};
-```
-Disini kita membuat tipe data baru dan struct untuk membuat kerangka dari node nya. `typedef int infotype` artinya membuat tipe data `infotype` bertipekan `int`. `typedef struct dimasList *address` artinya membuat alias tipe data address yang menyimpan alamat ke `struct dimasList`.
-Lalu untuk `struct dimasList` untuk membuat node nya yaitu berisi info, next, dan prev. Dan `struct List` untuk membuat head dan juga tail atau first dan juga last yang berfungsi sebagai pointer yang menunjuk dari setiap ujung pada List.
+        push(S, value);
 
-#### Bagian 3
-
-```C++
-address alokasi(infotype x) {
-    address P = new dimasList;
-    P->info = x;
-    P->next = Nil;
-    P->prev = Nil;
-    return P;
-}
-
-void dealokasi(address &x){
-    delete x;
-    x = Nil;
-}
-
-bool isEmpty(List L) {
-    return (L.first == Nil);
-}
-
-address cariElm(List L, infotype x) {
-    address P = L.first;
-    while (P != Nil && P->info != x) {
-        P = P->next;
+        input = cin.get();
     }
-    return P;
 }
 ```
 
-Ini adalah fungsi `alokasi` yang memiliki tipe data `address` sehingga output dari fungsi ini merupakan sebuah node `P`. `alokasi` bertujuan untuk membuat node baru yang akan memasukkan value `x` ke dalam node baru itu. Dan prosedur `dealokasi` untuk menghapus penuh sebuah node menggunakan `delete` untuk membebaskan memori yang sebelumnya dipakai oleh `P` dan membuat isi dari `P` adalah `Nil`.
-Fungsi `isEmpty` berguna untuk mengecek apakah list kosong atau tidak dengan cek elemen pertamanya apakah `Nil` atau tidak. Lalu fungsi cariElm berguna untuk mencari elemen tertentu yang memiliki value yang dicari.
+Setiap kali user memasukkan angka maka akan terbaca oleh program sebagai variabel tipe `char`, maka cara mengubah ke `int` menggunakan `infotype value = input - '0';` misal char '4' (ASCII 52) - char '0' (ASCII 48) = int 4. Setelah konversi ke `int` akan `push` dan meminta input user kembali, smapai user input `enter`.
 
-#### Bagian 4
+##### Code header stack
+![Unguided 3 - code_stackHeader](<screenshoot/Unguided 3/Unguided 3 - code_stackHeader.png>)
+
+Dalam file ini hanya ditambahakan prosedur `getInputStream` saja untuk.
 
 ```C++
-/* ---------- Operasi insert ---------- */
-void insertFirst(List &L, infotype D) {
-    address P = alokasi(D);
-    if (isEmpty(L)) {
-        L.first = L.last = P;
-    } else {
-        P->next = L.first;
-        L.first->prev = P;
-        L.first = P;
-    }
-}
-
-void insertLast(List &L, infotype D) {
-    address P = alokasi(D);
-    if (isEmpty(L)) {
-        L.first = L.last = P;
-    } else {
-        P->prev = L.last;
-        L.last->next = P;
-        L.last = P;
-    }
-}
-
-void insertAfter(List &L, infotype D, address target) {
-    if (target == Nil) {
-        cout << "Data tidak ditemukan";
-        return;
-    }
-    if (target == L.last) {
-        insertLast(L, D);   
-        return;
-    }
-    address P = alokasi(D);
-    P->next = target->next;
-    P->prev = target;
-    target->next->prev = P;
-    target->next = P;
-}
-
-void insertBefore(List &L, infotype D, address target) {
-    if (target == Nil) {
-        cout << "Data tidak ditemukan";
-        return;
-    } else if (target == L.first) {
-        insertFirst(L, D);
-        return;
-    }
-    address P = alokasi(D);
-    P->prev = target->prev;
-    P->next = target;
-    target->prev->next = P;
-    target->prev = P;
-}
+void getInputStream(stack &S);
 ```
 
-Dalam program ini digunakan 4 jenis insert yaitu `insertFirts` berguna menyisipkan elemen ke paling pertama, `inserLast` kebalikan dari `insertFirts`, `insertBefore` berguna untuk menyisipkan elemen sebelum elemen target, dan `insertAfter` berguna untuk menyisipkan elemen baru setelah elemen target.
-
-#### Bagian 5
-
-```C++
-/* ---------- Cetak ---------- */
-void printInfo(List L){
-    address P = L.first;
-    while (P != Nil) {
-        cout << P->info << " "; 
-        P = P->next;
-    }
-    cout << endl;
-}
-
-void printReverse(List L) {
-    address P = L.last;
-    cout << "Backward: ";
-    while (P != Nil) {
-        cout << P->info << " "; 
-        P = P->prev;
-    }
-    cout << endl;
-}
-```
-
-Prosedur `printInfo` berfungsi untuk mencetak semua value elemen dimulai dari `L.first` atau elemen pertama dari list, sedangkan `printReverse` kebalikan dari `printInfo`.
-
-#### Bagian 6
-
-```C++
-/* ---------- SMART INSERT (≥4 kondisi + edge cases + pesan) ---------- */
-void smartInsert(List &L, infotype x){
-    cout << "Smart Insert: ";
-    if (isEmpty(L)) {
-        cout << "list kosong, insert " << x << " di first";
-        insertFirst(L, x);
-    } else if (x < L.first->info) {
-        cout << x <<" < first, insert di first";
-        insertFirst(L, x);
-    } else if (x % 2 == 0) {
-        cout << x << " genap, insert di last";
-        insertLast(L, x);
-    } else {
-        address ada = cariElm(L, x);
-        if (ada != Nil) {
-            cout << " sudah ada, insert setelah " << x;
-            insertAfter(L, x, ada);
-        } else {
-            address P = L.first;
-            address target = Nil;
-            while (P != Nil && P->info <= x) {
-                P = P->next;
-            }
-            target = P;
-            if (target == Nil) {
-                cout << x << " lebih besar dari semua, insert di last";
-                insertLast(L, x);
-            } else {
-                int left = (target->prev ? target->prev->info : -9999);
-                cout << x << " di antara " << left << " dan " << target->info;
-                insertBefore(L, x, target);
-            }
-        }
-    }
-    cout << endl;
-}
-```
-
-Prosedur ini merupakan yang bertugas untuk menyisipkan elemen secara otomatis tergantung inputan dari pengguna. Jika list kosong maka `insertFirst`, jika inputan lebih kecil dari elemen pertama maka `insertFirst`, jika inputan merupakan bilangan genap maka `insertLast`, dan jika inputan bilangan ganjil jika merupakan angka yang paling besar dari list maka `insertLast` jika tidak maka akan `insertBefore`
-
-#### Bagian 7
-
-```C++
-/* ---------- Operasi delete (bantuan) ---------- */
-void hapusNode(List &L, address aku) {
-    if (aku == Nil) return;
-    if (aku == L.first && aku == L.last) {
-        L.first = L.last = Nil;
-    } else if (aku == L.first) {
-        L.first = aku->next;
-        if (L.first) L.first->prev = Nil;
-    } else if (aku == L.last) {
-        L.last = aku->prev;
-        if (L.last) L.last->next = Nil;
-    } else {
-        aku->prev->next = aku->next;
-        aku->next->prev = aku->prev;
-    }
-    dealokasi(aku);
-}
-
-/* ---------- DELETION ---------- */
-void hapusGanjil(List &L){
-    if (isEmpty(L)){
-        cout << "Conditional Delete: List kosong, tidak ada yang dihapus\n";
-        return;
-    }
-    int jumlahAngka = 0;
-    address P = L.first;
-    while (P != Nil) {
-        address next = P->next;
-        if (P->info%2 != 0) {
-            hapusNode(L, P);
-            jumlahAngka++;
-        }
-        P = next;
-    } 
-    cout << "Contiditional delete: " << jumlahAngka << " elemen ganjil dihapus\n";
-}
-
-void hapusByValue(List &L, infotype x) {
-    if (L.first == Nil) {
-        cout << "Dalam list ini tidak ada data yang tersisa\n";
-        return;
-    } 
-    address P = L.first;
-    while (P != Nil && P->info != x) {
-        P = P->next;
-    }
-    if (P == Nil){
-        cout << "Nilai " << x << " tidak ditemukan\n";
-    } else {
-        hapusNode(L, P);
-        cout << "Nilai " << x << " berhasil dihapus\n";
-    }
-}
-
-void hapusSemua(List &L) {
-    address P = L.first;
-    int jumlahBilangan = 0;
-    while (P!=Nil){
-        address next = P->next;
-        hapusNode(L, P);
-        P = next;
-        jumlahBilangan++;
-    }
-    cout << "Semua elemen (" << jumlahBilangan << ") berhasil dihapus";
-}
-```
-
-Prosedur-prosedur diatas berfungsi untuk menghapus dan membebaskan memori dari elemen yang sudah terhapus.
-
-#### Bagian 8
-
-```C++
-int main () {
-    List data;
-    infotype value;
-    data.first = Nil;
-    data.last = Nil;
-    cout << "ADVANCE OPERATIONS\n" << "SMART INSERT DEMO\n";
-    smartInsert(data, 7);
-    smartInsert(data, 3);
-    smartInsert(data, 5);
-    smartInsert(data, 11);
-    smartInsert(data, 32);
-    smartInsert(data, 9);
-    smartInsert(data, 4);
-
-    cout << "\nHasil smart insert\n" << "Forward: ";
-    printInfo(data);
-    printReverse(data);
-
-    cout << "\nCONDITIONAL DELETE (ANGKA GANJIL)\n" << "Sebelum conditional delete: ";
-    printInfo(data);
-    hapusGanjil(data);
-    cout << "Setelah conditional delete: ";
-    printInfo(data);
-    
-    cout << "\nDELETE BY VALUE DEMO\n";
-    hapusByValue(data, 9);
-    hapusByValue(data, 5);
-    hapusByValue(data, 4);
-    cout << "List akhir: ";
-    printInfo(data);
-
-    cout << "\nDELETE ALL DEMO\n";
-    hapusSemua(data);
-}
-
-```Fungsi main berfungsi untuk memanggil semua prosedur dan fungsi yang telah dibuat dan sebagai tempat untuk mengoperasikan semua perintah.
-
+Prosedur ini hanya menggunakan satu parameter sebagai input dan outputnya yaitu `S` atau stack nya.
 
 #### Output: 
 
-![unguided 3 - output](<screenshoot/unguided 3 - output.png>)
+![Unguided 3 - output](<screenshoot/Unguided 3/Unguided 3 - output.png>)
 
 **Penjelasan**
 
@@ -900,8 +371,9 @@ Dari output diatas dapat dilihat bahwa sudah sesuai dengan urutan dari yang suda
 
 ## Kesimpulan
 
-Sebagai praktikan, saya telah mempelajari dan mengimpementasikan doubly linked list ini. Doubly linked list merupakan linked list yang memiliki traversal dua arah (maju atau mundul), sehingga lebih fleksibel dibandingkan dengan single linked list. Melalui praktikum ini, saya menjadi paham bagaimana cara untuk memasukkan, menghapus, atau pencarian data dalam doubly linked list.
+Pada praktikum kali ini, praktikan telah mempelajari dan sedikit menguasai materi dari stack. Stack merupakan Abstract Data Type (ADT) atau sekumpulan data linear yang bekerja berdasarkan prinsip tertentu. Stack menggunakan sistem LIFO yang artinya elemen terakhir yang masuk akan keluar pertama kali.
 
 ## referensi
 - https://id.jobstreet.com/id/career-advice/article/stack-adalah#TOC1
--
+- https://fikti.umsu.ac.id/pengertian-algoritma-lifo-last-in-first-out/
+- https://glints.com/id/lowongan/stack-adalah/

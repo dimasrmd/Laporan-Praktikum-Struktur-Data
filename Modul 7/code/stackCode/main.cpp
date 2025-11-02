@@ -1,6 +1,5 @@
 #include "stack.h" // mengimport header file stack.h
 #include <iostream>
-
 using namespace std;
 
 int main() {
