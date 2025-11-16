@@ -15,36 +15,36 @@ Queue atau dalam bahasa Indonesia adalah antrean. Menurut Kamus Besar Bahasa Ind
 FIFO merupakan singkatan dari First In First Out, maksudnya adalah setiap kali ada sesuatu yang baru akan masuk ke dalam antrean dan keluar pertama dari antrian. Struktur FIFO pada queue, data pertama yang masuk akan keluar pertama atau data tersebut baru saja ditambahkan dalam queue disebut sebagai front atau head. Namun jika data ada pada urutan terakhir artinya data tersebut baru saja ditambahkan ke dalam queue disebut back, rear, atau tail.
 
 ### Operasi Dasar Queue
-**a. Enqueue**
+#### **a. Enqueue**
 Ini merupakan operasi untuk menambahkan elemen ke dalam queue. Jika sebelumnya antrean kosong maka elemen akan ada di posisi paling awal, Namun sebaliknya akan berada di paling akhir.
-**b. Dequeue**
+#### **b. Dequeue**
 Ini merupakan operasi unutk mengeluarkan elemen paling depan atau head. Karena queue menggunakan prinsip FIFO maka yang akan dilayani dari depan terlebih dahulu
-**c. Peek**
+#### **c. Peek**
 Ini adalah operasi untuk melihat data atau isi dari suaru elemen.
-**d. IsEmpty**
+#### **d. IsEmpty**
 Ini adalah operasi untuk mengecek apakah antrean itu kosong. Indikator pengecekannya jika pada array menggunakan head saja atau jumlah elemennya itu kosong.
-**c. IsFull**
+#### **c. IsFull**
 Ini adalah opeasi untuk mengecek apakah antrean itu penuh. Untuk indikator pengecekannya menggunakan tail saja atau jumlah elemennya itu adalah jumlah maksimum tampungan data.
 
 ### Jenis-jenis queue
 Queue memiliki beberapa jenis yang berbeda, setiap jenisnya memiliki fungsi implementasi yang berbeda-beda pula. Berikut beberapa jenis dari queue:
 
 #### 1. Berdasarkan struktur implementasi
-**1. Linear Queue**
+**a. Linear Queue**
 Linear queue ada 2 macam yaitu pada saat proses penghapusan atau dequeue headnya diam dan headnya bertambah (bergerak). 
 
 Kelebihan pada head yang diam, strukturnya dapat digunakan secara maksimal. Sedangkan kekurangannya, saat proses dequeu harus memindahkan value dari nya ke elemen sebelumnya pada setiap posisi value. 
 
 Kebalikan dari heaad yang diam, head yang bergerak ini memiliki kelebihan seperti tidak memerlukan proses perulangan untuk memindahkan setiap value elemennya. Namun kekurangnnya saat setelah proses dequeu karena headnya sudah bertambah maka elemen sebelunya yang sudah pernah jadi head tidak bisa digunakan kembali.
 
-**2. Circular Queue**
+**b. Circular Queue**
 Circular queue merupakan queue yang lebih baik dari linear queue. Circular secara harfiah artinya melingkar, maka Circular queue adalah queue yang memiliki struktur seperti lingkaran. Maksudnya indeks dapat kembali ke awal jika masih ada ruang kosong.
 
 #### 2. Berdasarkan kegunaan khusus
-**1. Priority Queue**
+**a. Priority Queue**
 Elemen dalam antrean yang memiliki prioritas. Jika elemen tersebut memiliki poin prioritas tertinggi maka akan langsung dilayani walaupun berada pada paling belakang dalam antrean.
 
-**2. Double Ended Queue (Dequeu)**
+**b. Double Ended Queue (Dequeu)**
 Queue ini menawarkan fleksibilitas yang lebih besar karena memungkinkan penambahan dan penghapusan elemen baik dari ujung depan maupun belakang.
 
 ### Perbedaan queue dengan stack
@@ -98,13 +98,13 @@ Dari output diatas, dapaat dikatakan bahwa output sudah sesuai dengan program ya
 ### 2. Unguided 2
 
 #### Code C++ Main
-![Unguided 2 - code_main](<screenshoot/Unguided 2/Unguided 2 - code_main.png>)
+![unguided 2 - code_main](<screenshoot/Unguided 2/Unguided 2 - code_main.png>)
 
-##### Code C++ Stack
-![Unguided 2 - code_stackCPP](<screenshoot/Unguided 2/Unguided 2 - code_stackCPP.png>)
+##### Code C++ queue
+![unguided 2 - code_queueCPP](<screenshoot/Unguided 2/Unguided 2 - code_queueCPP.png>)
 
-##### Code header stack
-![Unguided 2 - code_stackHeader](<screenshoot/Unguided 2/Unguided 2 - code_stackHeader.png>)
+##### Code header queue
+![unguided 2 - code_queueH](<screenshoot/Unguided 2/Unguided 2 - code_queueH.png>)
 
 **Penjelasan**
 Kode ini dibuat menggunakan linear queue dengan konsep alternatif 2 (head dan tail bergerak). Untuk operasi penambahan sama saja seperti pada nomor 1, namun berbeda pada pengurangan/dequeue. Berbeda karena pada saat dequeue menggeeser head ke belakanga (menambahkan nilai head).
@@ -120,10 +120,10 @@ Output yang ada diatas sudah sesuai dengan program yang dijalankan dan sesuai de
 #### Code C++ Main
 ![unguided 3 - code_main](<screenshoot/Unguided 3/Unguided 3 - code_main.png>)
 
-#### Code C++ Stack
+#### Code C++ queue
 ![unguided 3 - code_queueCPP](<screenshoot/Unguided 3/Unguided 3 - code_queueCPP.png>)
 
-#### Code header stack
+#### Code header queue
 ![unguided 3 - code_queueH](<screenshoot/Unguided 3/Unguided 3 - code_queueH.png>)
 
 **Penjelasan**
