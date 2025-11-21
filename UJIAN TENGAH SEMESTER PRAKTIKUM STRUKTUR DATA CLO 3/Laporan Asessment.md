@@ -1,9 +1,9 @@
 Asessment Praktikum Struktur Data
 
-Nama: Dimas Ramadhani
-NIM: 103112400065
-Kelas: IF-12-05
-Soal: Nomor 1 (NIM Ganjil)
+-Nama: Dimas Ramadhani
+-NIM: 103112400065
+-Kelas: IF-12-05
+-Soal: Nomor 1 (NIM Ganjil)
 
 1. Kode Program
 
