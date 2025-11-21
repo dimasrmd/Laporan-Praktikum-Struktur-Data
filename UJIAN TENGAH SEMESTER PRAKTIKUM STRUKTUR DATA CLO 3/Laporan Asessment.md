@@ -1,4 +1,4 @@
-[Asessment Praktikum Struktur Data]
+Asessment Praktikum Struktur Data
 
 Nama: Dimas Ramadhani
 NIM: 103112400065
