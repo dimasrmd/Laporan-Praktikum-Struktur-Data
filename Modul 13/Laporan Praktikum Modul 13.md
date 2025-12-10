@@ -14,47 +14,47 @@
 ## Dasar Teori
 ### Pengertian Multi Linked List
 Merupakan struktur data yang terdiri dari beberapa list yang saling berhubungan. Setiap elemen pada list induk dapat memiliki list anak sendiri. Konsep ini digunakan untuk mempresentasikan hubungan **one-to_many**, contohnya:
-    a. List Induk: Pegawai
-    b. List Anak : Anak dari pegawai tersebut
+    - List Induk: Pegawai
+    - List Anak : Anak dari pegawai tersebut
 Dengan kata lain, Multi Linked List adalah pengembangan dari Linked List yang memungkinkan setiap node induk memiliki sublist.
 
 ### Ciri Khas
-a. Terdapat list induk dan list anak.
-b. Setiap node induk memiliki pointer ke list anak.
-c. Operasi dasar meliputi:
+1. Terdapat list induk dan list anak.
+2. Setiap node induk memiliki pointer ke list anak.
+3. Operasi dasar meliputi:
     - insert induk : Sama seperti pada singly/doubly linked list.
     - insert anak  : Harus mengetahui induk terlebih dahulu.
     - delete induk : Menghapus induk beserta seluruh anaknya.
     - delete_anak  : Menghapus anak dari induk tertentu.
 
 ### Representasi
-a. Menggunakan **struct** untuk elemen induk dan anak.
-b. Elemen induk menyimpan:
+1. Menggunakan **struct** untuk elemen induk dan anak.
+2. Elemen induk menyimpan:
     - Info induk.
     - Pointer ke list anak.
     - Pointer ke induk berikutnya dan sebelumnya.
-c. Elemen anak menyimpan:
+3. Elemen anak menyimpan:
     - Info anak.
     - Pointer ke anak berikutnya dan sebelumnya.
 
 ### Operasi Dasar
-a. CreateList: Membuat list kosong.
-b. Insert:
+1. CreateList: Membuat list kosong.
+2. Insert:
     - insertFirst untuk induk.
     - insertFirstAnak, insertLastAnak untuk anak.
-c. Delete:
+3. Delete:
     - delFirst untuk induk.
     - delFirstAnak, delLastAnak untuk anak.
-d. Find: findElm untuk mencari induk/anak berdasarkan info.
-e. Print: printInfo untuk menampilkan semua elemen induk dan anak.
+4. Find: findElm untuk mencari induk/anak berdasarkan info.
+5. Print: printInfo untuk menampilkan semua elemen induk dan anak.
 
 ### Kelebihan Multi Linked List
-a. Memudahkan representasi data yang memiliki hubungan hierarki.
-b. Efisien untuk operasi penambahan dan penghapusan dibandingkan array.
+1. Memudahkan representasi data yang memiliki hubungan hierarki.
+2. Efisien untuk operasi penambahan dan penghapusan dibandingkan array.
 
 ### Kekurangan
-a. Kompleksitas impementasi lebih tinggi.
-b. Memerlukan manajemen memori yang baik (alokasi dan dealokasi).
+1. Kompleksitas impementasi lebih tinggi.
+2. Memerlukan manajemen memori yang baik (alokasi dan dealokasi).
 
 ---
 
