@@ -14,8 +14,9 @@
 ## Dasar Teori
 ### Pengertian Multi Linked List
 Merupakan struktur data yang terdiri dari beberapa list yang saling berhubungan. Setiap elemen pada list induk dapat memiliki list anak sendiri. Konsep ini digunakan untuk mempresentasikan hubungan **one-to_many**, contohnya:
-    - List Induk: Pegawai
-    - List Anak : Anak dari pegawai tersebut
+- List Induk: Pegawai
+- List Anak : Anak dari pegawai tersebut
+
 Dengan kata lain, Multi Linked List adalah pengembangan dari Linked List yang memungkinkan setiap node induk memiliki sublist.
 
 ### Ciri Khas
