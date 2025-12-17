@@ -20,15 +20,19 @@ Contohnya seperti sebuah rumah dan sekolah digambarkan menjadi `vertex`, untuk m
 ### Jenis Graph
 Graph memiliki beberapa jenisnya seperti:
 1. Graph Berarah **(Directed Graph)**, merupakan graph pada setiap node memiliki edges yang ada arahnya menujuk node atau simpul lain.
+
 ![Ilustrasi - Graph_Berarah](<Lampiran/Lampiran_Dokumen/Ilustrasi - Graph_Berarah.png>)
 
 2. Graph Tak-Berarah **(Undirected)**, setiap node setiap node yang dihubungkan oleh edges tanpa arah. Misalkan node a dihubungkan node b, maka node a dapat mengarah ke node b dan sebaliknya.
+
 ![Ilustrasi - Graph_TakBerarah](<Lampiran/Lampiran_Dokumen/Ilustrasi - Graph_TakBerarah.png>)
 
 3. Graph berbobot **(Weighted Graph)**, Setiap edges nya memiliki bobot atau nilai yang menggambarkan jarak, nilai, biaya, kapasitas dan lain-lain. Contoh seperti pemodelan jaringan dan rute jalan.
+
 ![Ilustrasi - Graph_Berbobot](<Lampiran/Lampiran_Dokumen/Ilustrasi - Graph_Berbobot.png>)
 
 4. Ketetanggaan **(Adjacency/neighbor)**, Dua simpul disebut bertetangga bila dihubungkan langsung oleh sebuah sisi. Konsep ini penting untuk penelusuran dan optimasi lintasan. 
+
 ![Ilustrasi - Adjacency Matrix](<Lampiran/Lampiran_Dokumen/Ilustrasi - Adjacency_Matrix.png>)
 
 ### ADT Graph
